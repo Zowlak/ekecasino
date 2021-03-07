@@ -16,4 +16,4 @@ Projet de casino pour la NSI.
 
 > Si perdu : perte de la mise
 
-http://image.noelshack.com/fichiers/2021/09/7/1615152862-eke-casino.png
+!(http://image.noelshack.com/fichiers/2021/09/7/1615152862-eke-casino.png)

@@ -15,3 +15,5 @@ Projet de casino pour la NSI.
 > Si gain (numéro choisi = la même couleur que le numéro sur laquel la roulette est tombé = les deux sont pairs ou les deux sont impairs) : gain = mise + mise x0.5
 
 > Si perdu : perte de la mise
+
+http://image.noelshack.com/fichiers/2021/09/7/1615152862-eke-casino.png

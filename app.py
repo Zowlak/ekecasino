@@ -64,5 +64,33 @@ def chart3():
         print("Error: unable to fetch items")
   return render_template("chart3.html", values=values, labels=labels, legend=legend) #envoie des valeurs à l'html
 
+@app.route('/chart4')
+def chart4():
+
+  legend = "Argent du joueur sur 5 parties"  
+  conn = sqlite3.connect('BDD_argent_joueur.db')  # nom de la base de données
+  cursor = conn.cursor()
+  try:
+        cursor.execute("SELECT partie from total_argent LIMIT 10") #choix de la table
+        rows = cursor.fetchall()
+        labels = list() #récupération des valeurs
+        i = 0
+        for row in rows:
+            labels.append(row[i])
+        
+        cursor.execute("SELECT argent from total_argent LIMIT 10") #choix de la table
+        rows = cursor.fetchall()
+        
+        values = list() #récupération des valeurs]
+        i = 0
+        for row in rows:
+            values.append(row[i])
+        cursor.close()    
+        conn.close()
+
+
+  except:
+        print("Error: unable to fetch items")
+  return render_template("chart4.html", values=values, labels=labels, legend=legend) #envoie des valeurs à l'html
 
 app.run(debug=True, use_reloader=False)

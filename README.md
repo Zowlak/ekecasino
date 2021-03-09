@@ -6,6 +6,8 @@ Projet de casino pour la NSI.
 
 > Affichage des statistiques du joueur dans la base de données des 5 premières parties
 
+> Affichage des statistiques du joueur dans la base de données des 10 premières parties
+
 > Affichage des statistiques du joueur dans la base de données sur toutes les parties
 
 > Jeu de la roulette en python qui enregistre et lis les données du joueur dans la base de donnée (nom & argent) 

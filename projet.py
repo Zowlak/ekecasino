@@ -132,22 +132,22 @@ def rejouer():
         jeu()
 
 def affichage():      
-    sqliteCon = sqlite3.connect('BDD_argent_joueur.db')
-    cursor = sqliteCon.cursor()
-    query_select_all = "SELECT * FROM total_argent"
+    sqliteCon = sqlite3.connect('BDD_argent_joueur.db')  # Connexion à la BDD
+    cursor = sqliteCon.cursor()                          #
+    query_select_all = "SELECT * FROM total_argent"      # On récupère tout
     cursor.execute(query_select_all)
     tablerows = cursor.fetchall()
     print("Nombre de parties: ", len(tablerows))
     print("Voici toutes les parties jouées : ")
     
-    for row in tablerows:
+    for row in tablerows:                                # On parcourt les lignes
         print("Partie: ", row[0])
-        print("Nom: ", row[1]) 
+        print("Nom: ", row[1])
         print("Argent: ", row[2])
         print("------\n")
-    
-    cursor.close()
+
+    cursor.close()                                       # On ferme la connexion à la BDD
     sqliteCon.close()
 
 jeu()
-affichage()
+affichage()                                              # Quand on a fini de jouer notre fonction se lance

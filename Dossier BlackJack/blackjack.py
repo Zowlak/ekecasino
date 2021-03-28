@@ -1,16 +1,19 @@
-import random
-import timeit
+from random import shuffle
 
-enseigne=["♠", "♥", "♣ ", "♦ "]
-valeur=[2, 3, 4, 5, 6, 7, 8, 9, 10, "VALET", "DAME", "ROI", "AS"]
+enseigne = ["♠", "♥", "♣ ", "♦ "]
+valeur = [2, 3, 4, 5, 6, 7, 8, 9, 10, "VALET", "DAME", "ROI", "AS"]
+
+
 def creation():
-    return [(x,y) for x in valeur for y in enseigne]
+    return [(x, y) for x in valeur for y in enseigne]
+
 
 paquet = creation()
-for i in range(500):
-    random.shuffle(paquet)
 
+for i in range(500):
+    shuffle(paquet)
 print(paquet)
+
 
 class Table(object):
 
@@ -61,7 +64,7 @@ class Table(object):
                 self.deal_card(self.dealer)
                 self.calculate_score(self.dealer)
                 print(self)
-            elif score >= 17:
+            else:
                 self.check_final_score()
 
     def __str__(self):  # this is just for checking progress during programming
@@ -126,21 +129,20 @@ class Table(object):
 
         if dealer_score > player_score:
             print("Dealer wins!")
-            self.end_game()
         else:
             print("{} wins!".format(self.player.name))
-            self.end_game()
+        self.end_game()
 
     def end_game(self):
 
         bank = self.player.funds
-        if bank >=10:
+        if bank >= 10:
             again = input("Do you want to play again (Y/N)? ")
             if again.lower().startswith('y'):
                 self.__init__(self.player.name, funds=self.player.funds)
             elif again.lower().startswith('n'):
                 exit(1)  # just trying exit code 1 to confirm this is exiting when I ask
-        elif bank < 10:
+        else:
             print("You're all out of money!  Come back with some more dough, good luck next time!")
             exit(2)
 
@@ -148,7 +150,6 @@ class Table(object):
 class Dealer(object):
 
     def __init__(self):
-
         self.name = "Dealer"
         self.score = 0
         self.hand = []
@@ -195,7 +196,6 @@ class Deck(object):
     # when dealing the cards use pop() to get the card off the top of the stack
 
     def __init__(self):
-
         # stack is composed of tuples:
         # [0] is a string to show the player for their hand
         self.stack = [('A', 1), ('2', 2), ('3', 3), ('4', 4), ('5', 5),
@@ -204,21 +204,15 @@ class Deck(object):
         self.shuffle()
 
     def shuffle(self):
-
         shuffle(self.stack)
 
     def deal_card(self):
-
-        card = self.stack.pop()
-        return card
+        return self.stack.pop()
 
 
 def main():
-
     player_name = input("Welcome to the casino!  What's your name? ")
     Table(player_name)
 
 
-if __name__ == '__main__':
-
-    main()
+main()

@@ -1,22 +1,21 @@
-from random import shuffle
 from colorama import Fore, Style
-from time import sleep
 import blackjackDealer as Bjd
+import blackjackPlayer as Bjp
+import blackjackDeck as BjD
 
 
-class Table(object):
-
+class Table:
+    """Cette classe va gérer le jeu. Il va distribuer, calculer les mises, etc."""
     def __init__(self, player, funds=100):
-
+        """On définit les variables et on appelle les autres fichier"""
         self.dealer = Bjd.Dealer()
-        self.player = Player(player, funds)
-        self.deck = Deck()
+        self.player = Bjp.Player(player, funds)
+        self.deck = BjD.Deck()
 
         # call table_setup() method to shuffle and deal first cards
         self.table_setup()
 
     def table_setup(self):
-
         # Mélange les cartes
         self.deck.shuffle()
 
@@ -135,59 +134,6 @@ class Table(object):
         else:
             print("Vous n'avez plus d'argent, n'hésitez pas à revenir avec plus de chance !")
             # exit(2)
-
-
-class Player(Bjd.Dealer):
-
-    def __init__(self, name, funds, bet=0):
-        super().__init__()
-        self.name = name
-        self.funds = funds
-        self.bet = bet
-
-    def place_bet(self, amount=10):
-
-        # Appelé à chaque tour, il montre combien on a dans notre banque et notre mise
-        self.funds -= amount
-        self.bet += amount
-
-    def payout(self):
-
-        # Le joueur gagne l'équivalent de sa mise en plus de reprendre sa mise initiale
-        self.funds += (self.bet * 2)
-        self.bet = 0
-
-    @staticmethod
-    def hit_or_stick():
-        while True:
-            choice = input("Voulez-vous une autre carte (O/N)? ")
-            if choice.lower().startswith('o'):
-                print(chr(27) + "[2J")
-                return True
-            elif choice.lower().startswith('n'):
-                print(chr(27) + "[2J")
-                return False
-            else:
-                print("Je n'ai pas compris, veuillez répéter pour le sourd s'il vous plaît")
-                continue
-
-
-class Deck(object):
-
-    def __init__(self):
-        self.stack = [('A', 1), ('2', 2), ('3', 3), ('4', 4), ('5', 5),
-                      ('6', 6), ('7', 7), ('8', 8), ('9', 9), ('10', 10),
-                      ('J', 10), ('Q', 10), ('K', 10)] * 4
-        print("Nous mélangeons les cartes, veuillez patienter")
-        self.shuffle()
-
-    def shuffle(self):
-        sleep(2)
-        for _ in range(500):
-            shuffle(self.stack)
-
-    def deal_card(self):
-        return self.stack.pop()
 
 
 def main():

@@ -1,25 +1,14 @@
 from random import shuffle
-
-enseigne = ["♠", "♥", "♣ ", "♦ "]
-valeur = [2, 3, 4, 5, 6, 7, 8, 9, 10, "VALET", "DAME", "ROI", "AS"]
-
-
-def creation():
-    return [(x, y) for x in valeur for y in enseigne]
-
-
-paquet = creation()
-
-for i in range(500):
-    shuffle(paquet)
-print(paquet)
+from colorama import Fore, Style
+from time import sleep
+import blackjackDealer as Bjd
 
 
 class Table(object):
 
     def __init__(self, player, funds=100):
 
-        self.dealer = Dealer()
+        self.dealer = Bjd.Dealer()
         self.player = Player(player, funds)
         self.deck = Deck()
 
@@ -28,20 +17,19 @@ class Table(object):
 
     def table_setup(self):
 
-        # shuffle the deck when we all 'sit down' at the table before dealing
+        # Mélange les cartes
         self.deck.shuffle()
 
-        # place initial bet for player
+        # On met la mise
         self.player.place_bet()
 
-        # deal a card to the player, then the dealer, then the player to start the game
+        # Distribue les cartes
         self.deal_card(self.player)
         self.deal_card(self.dealer)
         self.deal_card(self.player)
-        self.calculate_score(self.player)  # calculate the player and dealer score at start to check for blackjack
+        self.calculate_score(self.player)  # Calcul du score pour voir s'il y a blackjack ou pas
         self.calculate_score(self.dealer)
 
-        # call self.main() which is where we will set up the recurring hit/stick prompt and deal cards
         self.main()
 
     def main(self):
@@ -67,20 +55,20 @@ class Table(object):
             else:
                 self.check_final_score()
 
-    def __str__(self):  # this is just for checking progress during programming
+    def __str__(self):  # Affiche les scores actuels
 
         dealer_hand = [card for card, value in self.dealer.hand]
         player_hand = [card for card, value in self.player.hand]
 
-        print("Dealer hand : {}".format(dealer_hand))
-        print("Dealer score : {}".format(self.dealer.score))
+        print(Fore.YELLOW + "Main du Dealer : {}".format(dealer_hand))
+        print("Score du Dealer : {}".format(self.dealer.score))
         print()
-        print("{}'s hand : {}".format(self.player.name, player_hand))
-        print("{}'s score : {}".format(self.player.name, self.player.score))
+        print(Fore.BLUE + "Main de {} : {}".format(self.player.name, player_hand))
+        print("Score de {} : {}".format(self.player.name, self.player.score))
         print()
-        print(("{}'s current bet: {}.".format(self.player.name, self.player.bet)))
-        print("{}'s current bank: {}.".format(self.player.name, self.player.funds))
-        print("-" * 40)
+        print(("Mise de {} : {}.".format(self.player.name, self.player.bet)))
+        print("Argent de {} : {}.".format(self.player.name, self.player.funds))
+        print(Style.RESET_ALL + "~" * 40)
         return ''
 
     def deal_card(self, player):
@@ -90,7 +78,7 @@ class Table(object):
 
     def calculate_score(self, player):
 
-        ace = False  # figure a way to check for ace in hand
+        ace = False  # Cherche si AS
         score = 0
         for card in player.hand:
             if card[1] == 1 and not ace:
@@ -108,13 +96,14 @@ class Table(object):
         if score > 21:
             print()
             print(self)
-            print("{} busts".format(player.name))
-            print()
+            print(Fore.RED + "{} dépasse".format(player.name))
+            print(Style.RESET_ALL)
             self.end_game()
         elif score == 21:
             print(self)
-            print("{} blackjack!".format(player.name))
-            try:  # can only payout if player wins, not dealer.  Protecting with try / except
+            print(Fore.GREEN + "{} blackjack !".format(player.name))
+            print(Style.RESET_ALL)
+            try:
                 player.payout()
             except:
                 pass
@@ -128,34 +117,27 @@ class Table(object):
         player_score = self.player.score
 
         if dealer_score > player_score:
-            print("Dealer wins!")
+            print("Le Dealer a gagné!")
         else:
-            print("{} wins!".format(self.player.name))
+            print("{} a gagné !".format(self.player.name))
         self.end_game()
 
     def end_game(self):
 
         bank = self.player.funds
         if bank >= 10:
-            again = input("Do you want to play again (Y/N)? ")
-            if again.lower().startswith('y'):
+            again = input("Voulez-vous rejouer (O/N)? ")
+            if again.lower().startswith('o'):
+                print(chr(27) + "[2J")
                 self.__init__(self.player.name, funds=self.player.funds)
             elif again.lower().startswith('n'):
-                exit(1)  # just trying exit code 1 to confirm this is exiting when I ask
+                exit(1)
         else:
-            print("You're all out of money!  Come back with some more dough, good luck next time!")
-            exit(2)
+            print("Vous n'avez plus d'argent, n'hésitez pas à revenir avec plus de chance !")
+            # exit(2)
 
 
-class Dealer(object):
-
-    def __init__(self):
-        self.name = "Dealer"
-        self.score = 0
-        self.hand = []
-
-
-class Player(Dealer):
+class Player(Bjd.Dealer):
 
     def __init__(self, name, funds, bet=0):
         super().__init__()
@@ -163,55 +145,54 @@ class Player(Dealer):
         self.funds = funds
         self.bet = bet
 
-    def place_bet(self, amount=10):  # I might later incorporate a way to change amount, for now just default to 10
+    def place_bet(self, amount=10):
 
-        # called at the beginning of every hand
+        # Appelé à chaque tour, il montre combien on a dans notre banque et notre mise
         self.funds -= amount
         self.bet += amount
 
     def payout(self):
 
-        # money is subtracted from funds at start of each hand when bet goes down
-        # payout is 1:1 always (for now, maybe switch to 3:2 if player gets blackjack)
+        # Le joueur gagne l'équivalent de sa mise en plus de reprendre sa mise initiale
         self.funds += (self.bet * 2)
         self.bet = 0
 
     @staticmethod
     def hit_or_stick():
         while True:
-            choice = input("Do you want another card (Y/N)? ")
-            if choice.lower().startswith('y'):
+            choice = input("Voulez-vous une autre carte (O/N)? ")
+            if choice.lower().startswith('o'):
+                print(chr(27) + "[2J")
                 return True
             elif choice.lower().startswith('n'):
+                print(chr(27) + "[2J")
                 return False
             else:
-                print("I didn't understand")
+                print("Je n'ai pas compris, veuillez répéter pour le sourd s'il vous plaît")
                 continue
 
 
 class Deck(object):
 
-    # using one stack for now
-    # create a list of all the values and shuffle them
-    # when dealing the cards use pop() to get the card off the top of the stack
-
     def __init__(self):
-        # stack is composed of tuples:
-        # [0] is a string to show the player for their hand
         self.stack = [('A', 1), ('2', 2), ('3', 3), ('4', 4), ('5', 5),
                       ('6', 6), ('7', 7), ('8', 8), ('9', 9), ('10', 10),
                       ('J', 10), ('Q', 10), ('K', 10)] * 4
+        print("Nous mélangeons les cartes, veuillez patienter")
         self.shuffle()
 
     def shuffle(self):
-        shuffle(self.stack)
+        sleep(2)
+        for _ in range(500):
+            shuffle(self.stack)
 
     def deal_card(self):
         return self.stack.pop()
 
 
 def main():
-    player_name = input("Welcome to the casino!  What's your name? ")
+    player_name = input("Bienvenue à l'EKECasino, puis-je demander votre nom ? ")
+    print("Bonne chance {}, que la chance soit de votre côté. Voici votre table.".format(player_name))
     Table(player_name)
 
 

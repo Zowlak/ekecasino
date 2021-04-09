@@ -1,4 +1,5 @@
 from colorama import Fore, Style
+import sys
 import blackjackDealer as Bjd
 import blackjackPlayer as Bjp
 import blackjackDeck as BjD
@@ -12,7 +13,6 @@ class Table:
         self.player = Bjp.Player(player, funds)
         self.deck = BjD.Deck()
 
-        # call table_setup() method to shuffle and deal first cards
         self.table_setup()
 
     def table_setup(self):
@@ -32,7 +32,6 @@ class Table:
         self.main()
 
     def main(self):
-
         while True:
             print()
             print(self)
@@ -44,7 +43,6 @@ class Table:
                 self.dealer_hit()
 
     def dealer_hit(self):
-
         score = self.dealer.score
         while True:
             if score < 17:
@@ -55,7 +53,6 @@ class Table:
                 self.check_final_score()
 
     def __str__(self):  # Affiche les scores actuels
-
         dealer_hand = [card for card, value in self.dealer.hand]
         player_hand = [card for card, value in self.player.hand]
 
@@ -65,18 +62,16 @@ class Table:
         print(Fore.BLUE + "Main de {} : {}".format(self.player.name, player_hand))
         print("Score de {} : {}".format(self.player.name, self.player.score))
         print()
-        print(("Mise de {} : {}.".format(self.player.name, self.player.bet)))
+        print(Style.RESET_ALL + "Mise de {} : {}.".format(self.player.name, self.player.bet))
         print("Argent de {} : {}.".format(self.player.name, self.player.funds))
-        print(Style.RESET_ALL + "~" * 40)
+        print("~" * 40)
         return ''
 
     def deal_card(self, player):
-
         card = self.deck.stack.pop()
         player.hand.append(card)
 
     def calculate_score(self, player):
-
         ace = False  # Cherche si AS
         score = 0
         for card in player.hand:
@@ -130,10 +125,10 @@ class Table:
                 print(chr(27) + "[2J")
                 self.__init__(self.player.name, funds=self.player.funds)
             elif again.lower().startswith('n'):
-                exit(1)
+                sys.exit(1)
         else:
             print("Vous n'avez plus d'argent, n'hésitez pas à revenir avec plus de chance !")
-            # exit(2)
+            sys.exit(2)
 
 
 def main():

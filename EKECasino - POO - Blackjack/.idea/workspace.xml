@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7052b4a6-a427-409d-bc37-0faf5d20f690" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blackjackDeck.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blackjackPlayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blackjackDealer.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackjackDealer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blackjackTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackjackTable.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +34,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Python.bataille_navale_pvp">
+  <component name="RunManager" selected="Python.blackjackTable">
     <configuration name="bataille_navale_pvp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="EKECasino - POO - Blackjack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -61,17 +64,17 @@
       <method v="2" />
     </configuration>
     <configuration name="blackjackTable" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="EKECasino - POO - Blackjack" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="D:\Anaconda\Anaconda 2\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/blackjackTable.py" />
       <option name="PARAMETERS" value="" />
@@ -84,8 +87,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.bataille_navale_pvp" />
         <item itemvalue="Python.blackjackTable" />
+        <item itemvalue="Python.bataille_navale_pvp" />
       </list>
     </recent_temporary>
   </component>
@@ -98,6 +101,8 @@
       <option name="presentableId" value="Default" />
       <updated>1617798602521</updated>
       <workItem from="1617798603713" duration="6803000" />
+      <workItem from="1617991872097" duration="41000" />
+      <workItem from="1617991930932" duration="1950000" />
     </task>
     <servers />
   </component>
@@ -114,12 +119,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/EKECasino___POO___Blackjack$blackjackTable.coverage" NAME="blackjackTable Coverage Results" MODIFIED="1617801580064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EKECasino___POO___Blackjack$blackjackTable.coverage" NAME="blackjackTable Coverage Results" MODIFIED="1618000091495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/EKECasino___POO___Blackjack$bataille_navale_pvp.coverage" NAME="bataille_navale_pvp Coverage Results" MODIFIED="1617808388412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../../ECOLE 1ere/Coronavirus/NSI/Projet 2" />
   </component>
 </project>

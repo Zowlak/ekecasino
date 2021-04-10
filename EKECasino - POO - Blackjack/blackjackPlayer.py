@@ -1,4 +1,5 @@
 import blackjackDealer as Bjd
+from colorama import Fore, Style, Back
 
 
 class Player(Bjd.Dealer):
@@ -10,7 +11,7 @@ class Player(Bjd.Dealer):
         self.funds = funds
         self.bet = bet
 
-    def place_bet(self, amount=10):
+    def place_bet(self, amount):
         """Appelé à chaque tour, il montre combien on a dans notre banque et notre mise"""
         self.funds -= amount
         self.bet += amount
@@ -32,5 +33,5 @@ class Player(Bjd.Dealer):
                 print(chr(27) + "[2J")
                 return False
             else:
-                print("Je n'ai pas compris, veuillez répéter pour le sourd s'il vous plaît")
+                print(Back.RED + Fore.BLACK + "Je n'ai pas compris, veuillez répéter pour le sourd s'il vous plaît")
                 continue

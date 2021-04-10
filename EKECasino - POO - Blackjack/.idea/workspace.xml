@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7052b4a6-a427-409d-bc37-0faf5d20f690" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blackjackPlayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackjackPlayer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blackjackTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackjackTable.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +20,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/blackjackDeck.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blackjackPlayer.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blackjackTable.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blackjackDealer.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1qqEDqt7CUG9o2PoeuYDCS3RgMx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -38,7 +45,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="discord-application" />
   </component>
   <component name="RunManager" selected="Python.blackjackTable">
     <configuration name="bataille_navale_pvp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -103,6 +110,8 @@
       <workItem from="1617798603713" duration="6803000" />
       <workItem from="1617991872097" duration="41000" />
       <workItem from="1617991930932" duration="1950000" />
+      <workItem from="1618046246593" duration="4962000" />
+      <workItem from="1618060196277" duration="527000" />
     </task>
     <servers />
   </component>
@@ -123,9 +132,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/EKECasino___POO___Blackjack$blackjackTable.coverage" NAME="blackjackTable Coverage Results" MODIFIED="1618000091495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EKECasino___POO___Blackjack$blackjackTable.coverage" NAME="blackjackTable Coverage Results" MODIFIED="1618060687590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/EKECasino___POO___Blackjack$bataille_navale_pvp.coverage" NAME="bataille_navale_pvp Coverage Results" MODIFIED="1617808388412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../../ECOLE 1ere/Coronavirus/NSI/Projet 2" />
   </component>
 </project>

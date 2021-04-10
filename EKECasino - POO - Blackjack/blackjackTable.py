@@ -1,4 +1,4 @@
-from colorama import Fore, Style
+from colorama import Fore, Style, Back
 import sys
 import blackjackDealer as Bjd
 import blackjackPlayer as Bjp
@@ -16,11 +16,15 @@ class Table:
         self.table_setup()
 
     def table_setup(self):
-        # Mélange les cartes
+        """Mélange les cartes"""
         self.deck.shuffle()
 
         # On met la mise
-        self.player.place_bet()
+        amount = int(input("Combien voulez vous miser ? "))
+        while amount > self.player.funds:
+            print(Fore.BLACK + Back.RED + "Vous n'avez pas assez. Misez moins")
+            amount = int(input(Style.RESET_ALL + "Combien voulez vous miser ? "))
+        self.player.place_bet(amount)
 
         # Distribue les cartes
         self.deal_card(self.player)
@@ -120,21 +124,26 @@ class Table:
 
         bank = self.player.funds
         if bank >= 10:
-            again = input("Voulez-vous rejouer (O/N)? ")
-            if again.lower().startswith('o'):
-                print(chr(27) + "[2J")
-                self.__init__(self.player.name, funds=self.player.funds)
-            elif again.lower().startswith('n'):
-                sys.exit(1)
+            while True:
+                again = input("Voulez-vous rejouer (O/N)? ")
+                if again.lower().startswith('o'):
+                    print(chr(27) + "[2J")
+                    self.__init__(self.player.name, funds=self.player.funds)
+                    return True
+                elif again.lower().startswith('n'):
+                    sys.exit(1)
+                else:
+                    print(Back.RED + Fore.BLACK + "Je n'ai pas compris, veuillez répéter pour le sourd s'il vous plaît")
+                    continue
         else:
-            print("Vous n'avez plus d'argent, n'hésitez pas à revenir avec plus de chance !")
+            print(Back.RED + Fore.BLACK + "Vous n'avez plus d'argent, n'hésitez pas à revenir avec plus de chance !")
             sys.exit(2)
 
 
-def main():
+def launcher():
     player_name = input("Bienvenue à l'EKECasino, puis-je demander votre nom ? ")
     print("Bonne chance {}, que la chance soit de votre côté. Voici votre table.".format(player_name))
     Table(player_name)
 
 
-main()
+launcher()
